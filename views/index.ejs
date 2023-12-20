@@ -1,0 +1,62 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <ul>
+        <% products.forEach(product => { %>
+            <section class="container">
+                <a href="/products/<%= product.id %>">
+                    <li>
+                        <img src="/uploads/<%= product.image %>" alt="<%= product.title %> Image">
+                        <h1><%= product.title %></h1>
+                        <p><%= product.description %></p>
+                        <h3>$<%= product.price %></h3>
+                    </li>
+                </a>
+            </section>
+        <% }) %>
+    </ul>
+    <a href="/products/new">Agregar Producto</a>
+</body>
+</html>
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <title>Lista de Productos</title>
+     <link rel="stylesheet" href="/styles/index.css">
+ </head>
+ <body>
+     <h1>Lista de Productos</h1>
+     <ul>
+         <% products.forEach(product => { %>
+             <section class="container">
+                 <!-- Cambio en el enlace para visualizar detalles del producto -->
+                 <a href="/products/<%= product.id %>">
+                     <li>
+                         <img src="/uploads/<%= product.image %>" alt="<%= product.title %> Image">
+                         <h1><%= product.title %></h1>
+                         <!-- <p><%= product.description %></p> -->
+                         <h3>$<%= product.price %> USD</h3>
+                         <!-- Botones de eliminar y editar -->
+                         <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display: inline;">
+                             <button class="btn elim" type="submit">Eliminar</button>
+                         </form>
+                         <a class="edit" href="/products/<%= product.id %>/edit" class="btn">Editar</a>
+                     </li>
+                 </a>
+             </section>
+         <% }) %>
+     </ul>
+     <a href="/products/new">Agregar Producto</a>
+ </body>
+ </html>
+ 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="/styles/productDetail.css">
+</head>
+<body>
+    
+    <div class="print">
+        <img src="/uploads/<%= product.image %>" alt="<%= product.title %> Image">
+    </div>
+    <section class="product-details">
+        <h1><%= product.title %></h1>
+        <p><%= product.description %></p>
+        <h3>$<%= product.price %>USD</h3>
+        <button class="btn comprar">Comprar</button>
+        <button class="btn añadir">Añadir al Carrito</button>
+    </section>
+    <a class="return" href="/"><img src="/icons/volver.png" alt=""></a>
+</body>
+</html>

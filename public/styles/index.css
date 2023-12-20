@@ -1,0 +1,86 @@
+/* Estilos en index.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 3rem;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #202020;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.container {
+    width: 30%; /* Ancho del contenedor de cada producto */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container h1,
+.container p,
+.container h3 {
+    margin: 5px 0;
+}
+
+h3{
+    color: #28a745;
+}
+
+.btn {
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.btn.edit {
+    background-color: #28a745;
+}
+
+.edit{
+    font-size: 1rem;
+}
+
+
+
+a{
+    color: #161616;
+    text-decoration: none;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+
+.elim{
+    background-color: red;
+}
+
+.edit{
+    background-color: blue;
+    color: #ffffff;
+    padding: 5px 10px;
+}
