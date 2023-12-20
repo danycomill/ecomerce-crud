@@ -26,20 +26,43 @@ let products = [
     // ... (productos de ejemplo)
 ];
 
-// Renderizar la página principal con la lista de productos
+
+
+
+
+//Metodos:
+
+
+///////////////////////////////////////////////////////////////////////
+//////Renderizar la página principal con la lista de productos/////////
+///////////////////////////////////////////////////////////////////////
+
+// Esta ruta maneja las solicitudes GET a la ruta raíz ('/'). Al recibir esta solicitud, renderiza la vista 'index' y pasa el arreglo de productos como datos a esa vista.
 app.get('/', (req, res) => {
     res.render('index', { products });
 });
 
 
 
-// Renderizar la página para agregar un nuevo producto con imagen
+
+///////////////////////////////////////////////////////////////////////
+//// Renderizar la página para agregar un nuevo producto con imagen////
+///////////////////////////////////////////////////////////////////////
+
+// Aquí, al acceder a '/products/new' con una solicitud GET, se renderiza la vista 'new', la cual probablemente sea un formulario para agregar un nuevo producto.
 app.get('/products/new', (req, res) => {
     res.render('new');
 });
 
 
-// Crear un nuevo producto con imagen
+
+
+
+///////////////////////////////////////////////////////////////////////
+///////////////////Crear un nuevo producto con imagen//////////////////
+///////////////////////////////////////////////////////////////////////
+
+// Esta ruta maneja las solicitudes POST a '/products'. Aquí se espera que se envíen datos de un nuevo producto, incluida una imagen ('productImage'). Se obtienen los detalles del producto del cuerpo de la solicitud, se guarda la imagen en el servidor, se crea un nuevo objeto de producto con esos detalles y se agrega al arreglo products. Finalmente, redirecciona a la página principal.
 app.post('/products', upload.single('productImage'), (req, res) => {
     const { title, description, price } = req.body;
     const image = req.file; // El archivo subido
@@ -50,7 +73,12 @@ app.post('/products', upload.single('productImage'), (req, res) => {
 });
 
 
-// Renderizar la página para editar un producto
+
+///////////////////////////////////////////////////////////////////////
+//////////////Renderizar la página para editar un producto/////////////
+///////////////////////////////////////////////////////////////////////
+
+// Al acceder a '/products/:id/edit' con una solicitud GET, se busca un producto específico por su ID para editar. Si se encuentra el producto, se renderiza la vista 'edit' con los detalles de ese producto. En caso contrario, se redirige a la página principal.
 app.get('/products/:id/edit', (req, res) => {
     const productId = parseInt(req.params.id);
     const product = products.find(product => product.id === productId);
@@ -62,7 +90,15 @@ app.get('/products/:id/edit', (req, res) => {
 });
 
 
-// Actualizar un producto
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+/////////////////////////Actualizar un producto////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+// Esta ruta maneja solicitudes PUT a '/products/:id' para actualizar un producto. Se espera que se envíen datos actualizados del producto, como el título, descripción y precio. Busca el producto por su ID, actualiza los detalles y redirige a la página principal.
 app.put('/products/:id', (req, res) => {
     const productId = parseInt(req.params.id);
     const { title, description, price } = req.body;
@@ -74,7 +110,16 @@ app.put('/products/:id', (req, res) => {
 });
 
 
-// Renderizar la página para ver un producto específico
+
+
+
+
+///////////////////////////////////////////////////////////////////////
+/////Renderizar la página para ver un producto específico//////////////
+///////////////////////////////////////////////////////////////////////
+
+
+// Al acceder a '/products/:id' con una solicitud GET, se busca un producto específico por su ID para mostrar sus detalles. Si se encuentra el producto, se renderiza la vista 'productDetail' con los detalles de ese producto. En caso contrario, se redirige a la página principal.
 app.get('/products/:id', (req, res) => {
     const productId = parseInt(req.params.id);
     const product = products.find(product => product.id === productId);
@@ -86,14 +131,20 @@ app.get('/products/:id', (req, res) => {
 })
 
 
+///////////////////////////////////////////////////////////////////////
+/////////////////////////Eliminar un producto//////////////////////////
+///////////////////////////////////////////////////////////////////////
 
-// Eliminar un producto
+// Esta ruta maneja solicitudes DELETE a '/products/:id'. Elimina un producto específico del arreglo products basándose en su ID y luego redirige a la página principal.
 app.delete('/products/:id', (req, res) => {
     const productId = parseInt(req.params.id);
     products = products.filter(product => product.id !== productId);
     res.redirect('/');
 });
 
+
+
+// Servidor
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    console.log('Servidor funcionando en el puerto 3000');
 });
